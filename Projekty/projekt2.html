@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Konrad Dudek</title>
+	<meta charset="UTF-8">
+	<meta name="author" content="Konrad Dudek">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<link rel="stylesheet" href="style.css">
+
+<body>
+
+	<!-- Header -->
+	<div class="header">
+		<h1>Konrad Dudek</h1>
+		<p>Strona internetowa.</p>
+	</div>
+
+	<!-- Navigation Bar -->
+	<div class="navbar">
+		<ul id="menu">
+			<li><a href="index.html" title="Strona">Strona główna</a></li>
+			<li><a href="projekt1.html" title="Projekt numer 1">Projekt 1</a></li>
+			<li><a href="projekt2.html" style="border: lightgreen solid 3px;" title="Projekt numer 2">Projekt 2</a></li>
+			<li><a href="projekt3.html" title="Projekt numer 3">Projekt 3</a></li>
+			<li><a href="kontakt.html" title="Kontakt">Kontakt</a></li>
+		</ul>
+	</div>
+
+	<div class="row">
+
+		<!--Sidebar-->
+		<div class="sidebar">
+			<div class="sidebarin">
+				<h2> Spis treści: </h2>
+				<ol id="sidemenu">
+					<li><a href="#listy_studentow">Listy studentów</a></li>
+					<li><a href="#srednie">Średnie</a></li>
+				</ol>
+				<hr color="white">
+				<img src="images/uj_logo_white.png">
+			</div>
+		</div>
+		
+		<!--MAIN-->
+		<div class="content">
+			<h2>Projekt 2</h2>
+			<p id="opis">
+			Prezentuje operacje wykonywane na obiektach typu JSON.
+			Działanie poszczególnych funkcji będzie zaprezentowane po
+			naciśnięciu odpowiedniego przycisku. Dane jakie można wpisywać to:
+			<li><b>Rok:</b> [2013, 2014]</li>
+			<li><b>Nazwa kursu:</b> [AlgorithmsI, AlgorithmsII, BasicPhysicsI,
+				BasicPhysicsII, ProgrammingI, ProgrammingII]</li>
+			<li><b>Pozycja studetna na liście:</b> [1, 2, 3, ..., 11, 12] - liczby porządkowe
+				na podstawie listy stworzonej za pomocą przycisku "Pokaż studentów"</li>
+		</p>
+			
+				<!-- SKRYPT -->
+				<script type="text/javascript", src="skrypt.js"></script>
+				
+				
+				<h2 id="listy_studentow">Listy studentów</h2>
+				<ul id="listy_opis">
+					<h3>Działanie poszczególnych przycisków:</h3>
+					<li> <b>Wyczyść listę</b> - czyści listę studentów</li>
+					<li> <b>Pokaż studentów (<i>getStudentList</i>)</b> - wyświetla listę wszystkich studentów</li>
+					<li> <b>Sortuj</b> - sotuje listę studentów alfabetycznie po nazwisku</li>
+					<li> <b>Znajdź po kursie (<i>getStudentListForCourse</i>)</b> - wyświetla listę studentów, którzy brali
+					udział w danym kursie w danym roku. Aby funkcja zadziałała poprawnie
+					należy podać nazwę kursu np '<b>AlgorithmsI</b>' oraz rok np '<b>2013</b>'</li>
+				</ul>
+			<div class="students_div">
+				<label for="course_name">Nazwa kursu:</label>
+				<input type="text" id="course_name" name="course_name">
+				<hr color="white">
+				<label for="y_name">Rok:</label>
+				 <input type="text" id="y_name" name="y_name">
+				 <hr color="white">
+				<button class="button" onclick="myHelper.clearList('ls')">Wyczyść listę</button>
+				<button class="button" onclick="myHelper.printStudents(myHelper.getStudents(), 'ls', 'Lista studentów')">Pokaż Studentów</button>
+				<button class="button" onclick="myHelper.sortStudents()">Sortuj</button>
+				<button class="button" onclick="myHelper.getStudentForCourse(y_name.value, course_name.value)">Znajdź po kursie</button>
+				<hr color="white">
+				<p id="ls"></p>
+			</div>
+			<h2 id="srednie">Średnie</h2>
+			<ul id="srednie_opis">
+				<h3>Działanie poszczególnych przycisków:</h3>
+				<li> <b>Średnia studenta z roku (<i>getAvarageForStudentInYear</i>)</b> 
+					- wyświetla średnią studenta ze wszystkich przedmiotów w danym roku.
+				Należy podać <b>liczbę porządkową</b> studenta z listy oraz <b>rok</b></li>
+				<li> <b>Średnia studenta ze wszystkich lat (<i>getAvarageForStudentAllYears</i>)</b> 
+					- wyświetla średnią stuenta z wszystkich lat. Wystarczy podać 
+					<b>liczbę porządkową</b> studenta z listy</li>
+				<li> <b>Średnia kursu (<i>getAverageForCourse</i>)</b> 
+					- wyświetla średnią danego kursu w danym roku. Należy podać <b>nazwę kursu</b> oraz <b>rok</b>
+			</ul>
+			<div class="average_div">
+
+				<label for="y_name2">Rok:</label>
+ 				<input type="text" id="y_name2" name="y_name2">
+				<hr color="white">
+				<label for="course_name2">Nazwa kursu:</label>
+				<input type="text" id="course_name2" name="course_name2">
+				<hr color="white">
+				<label for="n">Pozycja studenta na liście:</label>
+				<input type="text" id="n" name="n">
+				<hr color="white">
+				<button class="button" onclick="myHelper.getAverageForStudentInYear(myHelper.getStudent(n.value), y_name2.value)">Średnia studenta z roku</button>
+				<button class="button" onclick="myHelper.getAverageForStudentAllYears(myHelper.getStudent(n.value))">Średnia studenta z wszystkich lat</button>
+				<button class="button" onclick="myHelper.getAverageForCourse(myHelper.getStudents(), y_name2.value, course_name2.value)">Średnia kursu</button>
+				<hr color="white">
+				<p id="av"></p>
+				
+			</div>
+		</div>
+
+	</div>
+
+	<!-- Footer -->
+	<div class="footer">
+		<span>Konrad Dudek &copy 2020</span>
+	</div>
+
+</body>
+
+</html>
